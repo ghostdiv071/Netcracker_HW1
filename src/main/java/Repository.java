@@ -1,6 +1,11 @@
+import contracts.Contract;
+
 import java.util.Arrays;
 import java.util.NoSuchElementException;
 
+/**
+ *
+ */
 public class Repository {
     public static final int DEFAULT_CAPACITY = 8;
 
@@ -15,6 +20,12 @@ public class Repository {
         else throw new IllegalArgumentException("Illegal capacity");
     }
 
+    /**
+     *
+     *
+     * @param id - id of searched contract
+     * @return - required contract
+     */
     public Contract getById(int id) {
         for (Contract contract : contracts) {
             if (contract.getId() == id)
@@ -23,6 +34,10 @@ public class Repository {
         throw new NoSuchElementException("No contract with id: " + id);
     }
 
+    /**
+     *
+     * @param id - id of the contract to be removed
+     */
     public void deleteById(int id) {
         boolean flag = true;
         for (Contract contract : contracts) {
@@ -36,6 +51,10 @@ public class Repository {
         if (flag) throw new NoSuchElementException("No contract with id: " + id);
     }
 
+    /**
+     *
+     * @param contract - contract that will be added to repository
+     */
     public void add(Contract contract) {
         if (contracts.length == size) {
             contracts = Arrays.copyOf(contracts, size * 2);

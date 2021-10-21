@@ -1,3 +1,5 @@
+package contracts;
+
 import person.Person;
 
 import java.time.LocalDate;
@@ -36,5 +38,14 @@ public abstract class Contract {
 
     public Person getOwner() {
         return owner;
+    }
+
+    @Override
+    public String toString() {
+        return "id=" + id +
+                ", startDate=" + startDate +
+                ", expirationDate=" + expirationDate +
+                ", number=" + number +
+                ", owner=" + owner;
     }
 }
