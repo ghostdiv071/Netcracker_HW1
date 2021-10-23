@@ -16,4 +16,10 @@ public class Passport {
     public int getPassportId() {
         return passportId;
     }
+
+    @Override
+    public String toString() {
+        return ", passportSeries=" + passportSeries +
+                ", passportId=" + passportId;
+    }
 }

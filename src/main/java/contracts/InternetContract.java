@@ -24,7 +24,7 @@ public class InternetContract extends Contract {
     public String toString() {
         return "InternetContract{" +
                 super.toString() +
-                ", connectionSpeed=" + connectionSpeed +
+                ", connection speed=" + connectionSpeed +
                 '}';
     }
 }

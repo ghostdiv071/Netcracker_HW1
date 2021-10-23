@@ -45,8 +45,8 @@ public class CellularContract extends Contract {
         return "CellularContract{" +
                 super.toString() +
                 ", cellular=" + cellular +
-                ", smsAmount=" + smsAmount +
-                ", trafficSize=" + trafficSize +
+                ", sms amount=" + smsAmount +
+                ", traffic size=" + trafficSize +
                 '}';
     }
 }

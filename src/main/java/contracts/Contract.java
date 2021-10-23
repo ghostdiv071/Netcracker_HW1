@@ -43,8 +43,8 @@ public abstract class Contract {
     @Override
     public String toString() {
         return "id=" + id +
-                ", startDate=" + startDate +
-                ", expirationDate=" + expirationDate +
+                ", start date=" + startDate +
+                ", expiration date=" + expirationDate +
                 ", number=" + number +
                 ", owner=" + owner;
     }
