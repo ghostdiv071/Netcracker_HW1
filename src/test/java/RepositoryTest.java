@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import person.Gender;
 import person.Passport;
 import person.Person;
+import repository.Repository;
 
 import java.time.LocalDate;
 import java.util.Arrays;
@@ -18,6 +19,9 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 public class RepositoryTest {
     private final static Repository repository = new Repository();
 
+    /**
+     * adding one contract
+     */
     @Test
     public void add() {
         Contract contract = createCellular(1);
@@ -25,6 +29,9 @@ public class RepositoryTest {
         assertEquals(contract, repository.getContracts()[0]);
     }
 
+    /**
+     * adding contracts of different types
+     */
     @Test
     public void addDifferentContracts() {
         Contract tv = createTV(1);
@@ -38,6 +45,9 @@ public class RepositoryTest {
         assertEquals(internet, repository.getContracts()[2]);
     }
 
+    /**
+     * adding contract with existing id
+     */
     @Test
     public void addExistedIdException() {
         Contract contract1 = createCellular(1);
@@ -46,6 +56,9 @@ public class RepositoryTest {
         assertThrows(IllegalArgumentException.class, () -> repository.add(contract2));
     }
 
+    /**
+     * getting contract by id
+     */
     @Test
     public void getById() {
         Contract contract = createInternet(1);
@@ -53,6 +66,9 @@ public class RepositoryTest {
         assertEquals(contract, repository.getById(1));
     }
 
+    /**
+     * getting non-existent contract
+     */
     @Test
     public void getNullContract() {
         Contract contract = createCellular(1);
@@ -60,6 +76,9 @@ public class RepositoryTest {
         assertThrows(NoSuchElementException.class, () -> repository.getById(2));
     }
 
+    /**
+     * delete contract by id
+     */
     @Test
     public void delete() {
         Contract contract = createCellular(1);
@@ -68,6 +87,9 @@ public class RepositoryTest {
         assertThrows(NoSuchElementException.class, () -> repository.getById(1));
     }
 
+    /**
+     * delete non-existent contract
+     */
     @Test
     public void deleteNullContract() {
         Contract contract = createCellular(1);
@@ -75,6 +97,9 @@ public class RepositoryTest {
         assertThrows(NoSuchElementException.class, () -> repository.deleteById(2));
     }
 
+    /**
+     * adding a collection of contracts
+     */
     @Test
     public void addCollection() {
         Contract internet = createInternet(1);

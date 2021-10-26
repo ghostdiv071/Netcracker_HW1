@@ -1,3 +1,5 @@
+package repository;
+
 import contracts.Contract;
 
 import java.util.Arrays;
@@ -5,12 +7,22 @@ import java.util.Collection;
 import java.util.NoSuchElementException;
 
 /**
- *
+ * repository.Repository - container of contracts. May contains all type of it.
  */
 public class Repository {
+    /**
+     * repository.Repository capacity, when default constructor is called
+     */
     private static final int DEFAULT_CAPACITY = 8;
 
+    /**
+     * Inner array of contracts
+     */
     private Contract[] contracts;
+
+    /**
+     * Actual size of repository. May differ from contracts.length
+     */
     private int size = 0;
 
     public Repository() {
@@ -27,6 +39,10 @@ public class Repository {
         }
     }
 
+    /**
+     *
+     * @return non-null objects from array
+     */
     public Contract[] getContracts() {
         return Arrays.copyOf(contracts, size);
     }
