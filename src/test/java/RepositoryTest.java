@@ -2,6 +2,7 @@ import contracts.CellularContract;
 import contracts.Contract;
 import contracts.InternetContract;
 import contracts.TelevisionContract;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import person.Gender;
 import person.Passport;
@@ -17,7 +18,12 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class RepositoryTest {
-    private final static Repository repository = new Repository();
+    private Repository repository;
+
+    @BeforeEach
+    void init() {
+        repository = new Repository();
+    }
 
     /**
      * adding one contract
