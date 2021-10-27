@@ -12,6 +12,7 @@ public final class Person {
     private final LocalDate birthday;
     private final Gender gender;
     Passport passport;
+    private int age;
 
     public Person(int id, String surname, String name, String patronymic, LocalDate birthday, Gender gender, Passport passport) {
         this.id = id;
@@ -21,6 +22,7 @@ public final class Person {
         this.birthday = birthday;
         this.gender = gender;
         this.passport = passport;
+        setAge();
     }
 
     public int getId() {
@@ -68,7 +70,11 @@ public final class Person {
     }
 
     public int getAge() {
-        return Period.between(birthday, LocalDate.now()).getYears();
+        return age;
+    }
+
+    public void setAge() {
+        age = Period.between(birthday, LocalDate.now()).getYears();
     }
 
     @Override
@@ -81,6 +87,7 @@ public final class Person {
                 ", birthday=" + birthday +
                 ", gender=" + gender.getValue() +
                 passport.toString() +
+                ", age=" + age +
                 '}';
     }
 }

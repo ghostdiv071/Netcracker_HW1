@@ -19,10 +19,12 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class RepositoryTest {
     private Repository repository;
+    private Person person;
 
     @BeforeEach
     void init() {
         repository = new Repository();
+        person = getPerson();
     }
 
     /**
@@ -118,8 +120,8 @@ public class RepositoryTest {
         assertEquals(tv, repository.getById(3));
     }
 
-    private Person getPerson(int id) {
-        return new Person(id,
+    private Person getPerson() {
+        return new Person(1,
                 "Ivanov",
                 "Ivan",
                 "Ivanovich",
@@ -133,7 +135,7 @@ public class RepositoryTest {
                 LocalDate.of(2020, 2, 1),
                 LocalDate.of(2023, 5, 2),
                 1,
-                getPerson(id),
+                person,
                 200,
                 200,
                 200);
@@ -144,7 +146,7 @@ public class RepositoryTest {
                 LocalDate.of(2022, 2, 1),
                 LocalDate.of(2023, 5, 2),
                 14,
-                getPerson(id),
+                person,
                 15);
     }
 
@@ -153,7 +155,7 @@ public class RepositoryTest {
                 LocalDate.of(2022, 2, 1),
                 LocalDate.of(2023, 5, 2),
                 14,
-                getPerson(id),
+                person,
                 100);
     }
 }
