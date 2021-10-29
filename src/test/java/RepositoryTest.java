@@ -19,12 +19,11 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class RepositoryTest {
     private Repository repository;
-    private Person person;
+    private final Person person = getPerson();
 
     @BeforeEach
     void init() {
         repository = new Repository();
-        person = getPerson();
     }
 
     /**
