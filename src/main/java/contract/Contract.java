@@ -1,27 +1,24 @@
-package contracts;
+package contract;
 
+import entity.AbstractEntity;
 import person.Person;
 
 import java.time.LocalDate;
 
-public abstract class Contract {
+public class Contract extends AbstractEntity {
 
-    private final int id;
+    private int id;
     private final LocalDate startDate;
     private final LocalDate expirationDate;
     private final long number;
     private final Person owner;
 
     protected Contract(int id, LocalDate startDate, LocalDate expirationDate, long number, Person owner) {
-        this.id = id;
+        super(id);
         this.startDate = startDate;
         this.expirationDate = expirationDate;
         this.number = number;
         this.owner = owner;
-    }
-
-    public int getId() {
-        return id;
     }
 
     public LocalDate getStartDate() {

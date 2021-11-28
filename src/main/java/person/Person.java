@@ -1,11 +1,13 @@
 package person;
 
+import entity.AbstractEntity;
+
 import java.time.LocalDate;
 import java.time.Period;
 
-public final class Person {
+public final class Person extends AbstractEntity {
 
-    private final int id;
+    private int id;
     private String surname;
     private String name;
     private String patronymic;
@@ -15,7 +17,7 @@ public final class Person {
     private int age;
 
     public Person(int id, String surname, String name, String patronymic, LocalDate birthday, Gender gender, Passport passport) {
-        this.id = id;
+        super(id);
         this.surname = surname;
         this.name = name;
         this.patronymic = patronymic;

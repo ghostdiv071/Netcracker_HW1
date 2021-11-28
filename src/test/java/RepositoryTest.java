@@ -1,7 +1,7 @@
-import contracts.CellularContract;
-import contracts.Contract;
-import contracts.InternetContract;
-import contracts.TelevisionContract;
+import contract.CellularContract;
+import contract.Contract;
+import contract.InternetContract;
+import contract.TelevisionContract;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import person.Gender;

@@ -1,10 +1,16 @@
 package repository;
 
-import contracts.Contract;
+import comparator.BubbleSorter;
+import comparator.ISorter;
+import comparator.InsertionSorter;
+import comparator.SelectionSorter;
+import contract.Contract;
 
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Comparator;
 import java.util.NoSuchElementException;
+import java.util.function.Predicate;
 
 /**
  * repository.Repository - container of contracts. May contains all type of it.
@@ -40,7 +46,6 @@ public class Repository {
     }
 
     /**
-     *
      * @return non-null objects from array
      */
     public Contract[] getContracts() {
@@ -105,5 +110,29 @@ public class Repository {
 
     public int size() {
         return size;
+    }
+
+    public Contract search(Predicate<Contract> criterion) {
+        return Arrays.stream(getContracts()).
+                filter(criterion).
+                findFirst().
+                orElseThrow(() -> new NoSuchElementException(
+                        "There is no element that fits the criterion"
+                ));
+    }
+
+    public void bubbleSort(Comparator<Contract> comparator) {
+        ISorter sorter = new BubbleSorter();
+        contracts = sorter.sort(getContracts(), comparator);
+    }
+
+    public void selectionSort(Comparator<Contract> comparator) {
+        ISorter sorter = new SelectionSorter();
+        contracts = sorter.sort(getContracts(), comparator);
+    }
+
+    public void InsertionSort(Comparator<Contract> comparator) {
+        ISorter sorter = new InsertionSorter();
+        contracts = sorter.sort(getContracts(), comparator);
     }
 }
