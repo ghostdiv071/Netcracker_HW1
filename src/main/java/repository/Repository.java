@@ -121,18 +121,7 @@ public class Repository {
                 ));
     }
 
-    public void bubbleSort(Comparator<Contract> comparator) {
-        ISorter sorter = new BubbleSorter();
-        contracts = sorter.sort(getContracts(), comparator);
-    }
-
-    public void selectionSort(Comparator<Contract> comparator) {
-        ISorter sorter = new SelectionSorter();
-        contracts = sorter.sort(getContracts(), comparator);
-    }
-
-    public void InsertionSort(Comparator<Contract> comparator) {
-        ISorter sorter = new InsertionSorter();
+    public void sort(ISorter sorter, Comparator<Contract> comparator) {
         contracts = sorter.sort(getContracts(), comparator);
     }
 }
