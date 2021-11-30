@@ -112,6 +112,11 @@ public class Repository {
         return size;
     }
 
+    /**
+     *
+     * @param criterion - search parameters
+     * @return contract that fits parameters
+     */
     public Contract search(Predicate<Contract> criterion) {
         return Arrays.stream(getContracts()).
                 filter(criterion).
@@ -121,6 +126,11 @@ public class Repository {
                 ));
     }
 
+    /**
+     *
+     * @param sorter - object of one of the ISorter realization
+     * @param comparator - sorting parameter
+     */
     public void sort(ISorter sorter, Comparator<Contract> comparator) {
         contracts = sorter.sort(getContracts(), comparator);
     }
