@@ -7,47 +7,28 @@ import java.time.Period;
 
 public final class Person extends AbstractEntity {
 
-    private String surname;
-    private String name;
-    private String patronymic;
-    private final LocalDate birthday;
-    private final Gender gender;
-    Passport passport;
+    private String fullName;
+    private LocalDate birthday;
+    private Gender gender;
+    private int passportSeries;
+    private int passportId;
     private int age;
 
-    public Person(int id, String surname, String name, String patronymic, LocalDate birthday, Gender gender, Passport passport) {
+    public Person() {
+    }
+
+    public Person(int id, String fullName, LocalDate birthday, Gender gender, int passportSeries, int passportId) {
         super(id);
-        this.surname = surname;
-        this.name = name;
-        this.patronymic = patronymic;
+        this.fullName = fullName;
         this.birthday = birthday;
         this.gender = gender;
-        this.passport = passport;
+        this.passportSeries = passportSeries;
+        this.passportId = passportId;
         setAge();
     }
 
-    public String getSurname() {
-        return surname;
-    }
-
-    public void setSurname(String surname) {
-        this.surname = surname;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getPatronymic() {
-        return patronymic;
-    }
-
-    public void setPatronymic(String patronymic) {
-        this.patronymic = patronymic;
+    public String getFullName() {
+        return fullName;
     }
 
     public LocalDate getBirthday() {
@@ -58,12 +39,12 @@ public final class Person extends AbstractEntity {
         return gender;
     }
 
-    public Passport getPassport() {
-        return passport;
+    public int getPassportSeries() {
+        return passportSeries;
     }
 
-    public void setPassport(Passport passport) {
-        this.passport = passport;
+    public int getPassportId() {
+        return passportId;
     }
 
     public int getAge() {
@@ -78,13 +59,54 @@ public final class Person extends AbstractEntity {
     public String toString() {
         return "Person{" +
                 "id=" + getId() +
-                ", surname='" + surname + '\'' +
-                ", name='" + name + '\'' +
-                ", patronymic='" + patronymic + '\'' +
+                ", full name=" + fullName + '\'' +
                 ", birthday=" + birthday +
                 ", gender=" + gender.getValue() +
-                passport.toString() +
+                ", passport series=" + passportSeries +
+                ", passport id=" + passportId +
                 ", age=" + age +
                 '}';
+    }
+
+    public static class Builder {
+        private final Person person;
+
+        public Builder() {
+            person = new Person();
+        }
+
+        public Builder setId(int id) {
+            person.setId(id);
+            return this;
+        }
+
+        public Builder setFullName(String fullName) {
+            person.fullName = fullName;
+            return this;
+        }
+
+        public Builder setBirthday(LocalDate birthday) {
+            person.birthday = birthday;
+            return this;
+        }
+
+        public Builder setGender(Gender gender) {
+            person.gender = gender;
+            return this;
+        }
+
+        public Builder setPassportSeries(int passportSeries) {
+            person.passportSeries = passportSeries;
+            return this;
+        }
+
+        public Builder setPassportId(int passportId) {
+            person.passportId = passportId;
+            return this;
+        }
+
+        public Person build() {
+            return person;
+        }
     }
 }

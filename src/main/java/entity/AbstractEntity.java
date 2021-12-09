@@ -3,6 +3,8 @@ package entity;
 public abstract class AbstractEntity {
     private int id;
 
+    public AbstractEntity() {}
+
     public AbstractEntity(int id) {
         setId(id);
     }

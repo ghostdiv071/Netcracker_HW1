@@ -2,10 +2,8 @@ import contract.CellularContract;
 import contract.Contract;
 import contract.InternetContract;
 import contract.TelevisionContract;
-import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import person.Gender;
-import person.Passport;
 import person.Person;
 import repository.Repository;
 
@@ -18,11 +16,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class RepositoryTest {
-    private static Repository repository;
+    private Repository repository;
     private final Person person = getPerson();
 
-    @BeforeAll
-    static void init() {
+    @BeforeEach
+    public void init() {
         repository = new Repository();
     }
 
@@ -120,13 +118,13 @@ public class RepositoryTest {
     }
 
     private Person getPerson() {
-        return new Person(1,
-                "Ivanov",
-                "Ivan",
-                "Ivanovich",
-                LocalDate.of(2000, 2, 1),
-                Gender.MALE,
-                new Passport(1234, 123456));
+        return new Person.Builder()
+                .setId(1)
+                .setFullName("Ivanov Ivan Ivanovich")
+                .setBirthday(LocalDate.of(2000, 2, 1))
+                .setPassportSeries(1234)
+                .setPassportId(123456)
+                .build();
     }
 
     private Contract createCellular(int id) {
