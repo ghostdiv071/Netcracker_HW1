@@ -7,7 +7,6 @@ import java.time.Period;
 
 public final class Person extends AbstractEntity {
 
-    private int id;
     private String surname;
     private String name;
     private String patronymic;
@@ -25,10 +24,6 @@ public final class Person extends AbstractEntity {
         this.gender = gender;
         this.passport = passport;
         setAge();
-    }
-
-    public int getId() {
-        return id;
     }
 
     public String getSurname() {
@@ -82,7 +77,7 @@ public final class Person extends AbstractEntity {
     @Override
     public String toString() {
         return "Person{" +
-                "id=" + id +
+                "id=" + getId() +
                 ", surname='" + surname + '\'' +
                 ", name='" + name + '\'' +
                 ", patronymic='" + patronymic + '\'' +

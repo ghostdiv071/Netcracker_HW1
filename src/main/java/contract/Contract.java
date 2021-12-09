@@ -7,7 +7,6 @@ import java.time.LocalDate;
 
 public class Contract extends AbstractEntity {
 
-    private int id;
     private final LocalDate startDate;
     private final LocalDate expirationDate;
     private final long number;
@@ -39,7 +38,7 @@ public class Contract extends AbstractEntity {
 
     @Override
     public String toString() {
-        return "id=" + id +
+        return "id=" + getId() +
                 ", start date=" + startDate +
                 ", expiration date=" + expirationDate +
                 ", number=" + number +

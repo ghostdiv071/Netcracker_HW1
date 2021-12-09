@@ -1,21 +1,16 @@
 package repository;
 
-import comparator.BubbleSorter;
 import comparator.ISorter;
-import comparator.InsertionSorter;
-import comparator.SelectionSorter;
 import contract.Contract;
 
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Comparator;
-import java.util.NoSuchElementException;
+import java.util.*;
 import java.util.function.Predicate;
 
 /**
  * repository.Repository - container of contracts. May contains all type of it.
  */
 public class Repository {
+
     /**
      * repository.Repository capacity, when default constructor is called
      */
@@ -30,6 +25,11 @@ public class Repository {
      * Actual size of repository. May differ from contracts.length
      */
     private int size = 0;
+
+    /**
+     * set of ids, in order to avoid ids repetition
+     */
+    private final Set<Integer> ids = new TreeSet<>();
 
     public Repository() {
         contracts = new Contract[DEFAULT_CAPACITY];
@@ -85,14 +85,13 @@ public class Repository {
      * @param contract - contract that will be added to repository
      */
     public void add(Contract contract) {
-        for (Contract c : getContracts()) {
-            if (c.getId() == contract.getId()) {
-                throw new IllegalArgumentException("There is already a contract with such id: " + contract.getId());
-            }
+        if (ids.stream().anyMatch(id -> id == contract.getId())) {
+            throw new IllegalArgumentException("There is already a contract with such id: " + contract.getId());
         }
         if (contracts.length == size) {
             contracts = Arrays.copyOf(contracts, size * 2);
         }
+        ids.add(contract.getId());
         contracts[size++] = contract;
     }
 
@@ -113,7 +112,6 @@ public class Repository {
     }
 
     /**
-     *
      * @param criterion - search parameters
      * @return contract that fits parameters
      */
@@ -127,8 +125,7 @@ public class Repository {
     }
 
     /**
-     *
-     * @param sorter - object of one of the ISorter realization
+     * @param sorter     - object of one of the ISorter realization
      * @param comparator - sorting parameter
      */
     public void sort(ISorter sorter, Comparator<Contract> comparator) {
