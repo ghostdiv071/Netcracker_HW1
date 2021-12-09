@@ -26,11 +26,6 @@ public class Repository {
      */
     private int size = 0;
 
-    /**
-     * set of ids, in order to avoid ids repetition
-     */
-    private final Set<Integer> ids = new TreeSet<>();
-
     public Repository() {
         contracts = new Contract[DEFAULT_CAPACITY];
     }
@@ -85,13 +80,12 @@ public class Repository {
      * @param contract - contract that will be added to repository
      */
     public void add(Contract contract) {
-        if (ids.stream().anyMatch(id -> id == contract.getId())) {
+        if (Arrays.stream(getContracts()).anyMatch(item -> item.getId() == contract.getId())) {
             throw new IllegalArgumentException("There is already a contract with such id: " + contract.getId());
         }
         if (contracts.length == size) {
             contracts = Arrays.copyOf(contracts, size * 2);
         }
-        ids.add(contract.getId());
         contracts[size++] = contract;
     }
 

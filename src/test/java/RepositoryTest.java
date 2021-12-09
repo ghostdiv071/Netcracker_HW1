@@ -4,6 +4,7 @@ import contract.InternetContract;
 import contract.TelevisionContract;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import person.Gender;
 import person.Person;
 import repository.Repository;
 
@@ -122,6 +123,7 @@ public class RepositoryTest {
                 .setId(1)
                 .setFullName("Ivanov Ivan Ivanovich")
                 .setBirthday(LocalDate.of(2000, 2, 1))
+                .setGender(Gender.MALE)
                 .setPassportSeries(1234)
                 .setPassportId(123456)
                 .build();

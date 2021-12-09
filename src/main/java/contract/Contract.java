@@ -7,10 +7,10 @@ import java.time.LocalDate;
 
 public class Contract extends AbstractEntity {
 
-    private final LocalDate startDate;
-    private final LocalDate expirationDate;
-    private final long number;
-    private final Person owner;
+    private LocalDate startDate;
+    private LocalDate expirationDate;
+    private long number;
+    private Person owner;
 
     protected Contract(int id, LocalDate startDate, LocalDate expirationDate, long number, Person owner) {
         super(id);
@@ -24,16 +24,32 @@ public class Contract extends AbstractEntity {
         return startDate;
     }
 
+    public void setStartDate(LocalDate startDate) {
+        this.startDate = startDate;
+    }
+
     public LocalDate getExpirationDate() {
         return expirationDate;
+    }
+
+    public void setExpirationDate(LocalDate expirationDate) {
+        this.expirationDate = expirationDate;
     }
 
     public long getNumber() {
         return number;
     }
 
+    public void setNumber(long number) {
+        this.number = number;
+    }
+
     public Person getOwner() {
         return owner;
+    }
+
+    public void setOwner(Person owner) {
+        this.owner = owner;
     }
 
     @Override

@@ -106,6 +106,7 @@ public final class Person extends AbstractEntity {
         }
 
         public Person build() {
+            person.setAge();
             return person;
         }
     }
